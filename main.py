@@ -18,7 +18,7 @@ with open("/data/config.json" if os.path.exists("/data/config.json") else "/code
 auth = tsc.TableauAuth(conf["user"], conf["#pass"])
 server = tsc.Server(conf["server"])
 
-with server.auth.sign_in(tableau_auth):
+with server.auth.sign_in(auth):
     datasources, pitem = server.datasources.get()
     print("\nThere are {} datasources on site: ".format(pitem.total_available))
     print([datasource.name for datasource in datasources])
