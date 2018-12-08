@@ -7,7 +7,7 @@ import json
 import os
 import sys
 
-if not os.path.exists("/data/config.json") and not os.path.exists("config.json"):
+if (not os.path.exists("/data/config.json")) and (not os.path.exists("config.json")):
 	print("Cannot run without configuration")
 	sys.exit(0)
 
