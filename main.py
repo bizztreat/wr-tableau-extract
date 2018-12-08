@@ -12,6 +12,13 @@ if (not os.path.exists("/data/config.json")) and (not os.path.exists("/code/conf
 	sys.exit(0)
 
 with open("/data/config.json" if os.path.exists("/data/config.json") else "/code/config.json", "r") as conf_file:
-	conf = json.load(conf_file)
+	conf = json.load(conf_file)["parameters"]
 
-print(conf)
+
+auth = tsc.TableauAuth(conf["user"], conf["#pass"])
+server = TSC.Server(conf["server"])
+
+with server.auth.sign_in(tableau_auth):
+    datasources, pitem = server.datasources.get()
+    print("\nThere are {} datasources on site: ".format(pitem.total_available))
+    print([datasource.name for datasource in datasources])
