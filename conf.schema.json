@@ -1,0 +1,54 @@
+{
+	"title": "Tableau Configuration",
+	"type": "object",
+	"properties": {
+		"server": {
+			"title": "Server URL:",
+			"type": "string",
+			"propertyOrder": 1,
+			"default": "https://mytableauserver.com",
+			"description": "Tableau Server URL"
+		},
+		"user": {
+			"title": "User name",
+			"type": "string",
+			"propertyOrder": 2,
+			"default": "",
+			"description": "Tableau Server login name"
+		},
+		"#pass": {
+			"title": "Password",
+			"type": "string",
+			"format": "password",
+			"propertyOrder": 3,
+			"default": "",
+			"description": "Tableau server login password"
+		},
+		"type": {
+			"title": "Refresh type",
+			"type": "string",
+			"propertyOrder": 4,
+			"enum": [
+				"increment",
+				"full"
+			],
+			"default": "increment",
+			"description": "Increment / Full refresh"
+		},
+		"datasources": {
+			"title": "Datasources",
+			"type": "array",
+			"propertyOrder": 5,
+			"items": {
+				"type": "string"
+			}
+		}
+	},
+	"required": [
+		"#pass",
+		"user",
+		"type",
+		"server",
+		"datasources"
+	]
+}
