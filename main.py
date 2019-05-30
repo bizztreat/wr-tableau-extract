@@ -51,7 +51,7 @@ with server.auth.sign_in(auth):
 		if ds.name in conf["datasources"] and refresh_type==conf["type"]:
 			print("Starting {0} refresh of {1}".format(refresh_type,ds.name))
 			response = ""
-			#response = server.tasks.run(task)
+			response = server.tasks.run(task)
 			if not nopoll_mode:
 				try: root = ET.fromstring(response)
 				except Exception as m:
